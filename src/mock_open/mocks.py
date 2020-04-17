@@ -175,7 +175,8 @@ class MockOpen(Mock):
             child = self._get_child_mock(_new_name='()', name=path)
             self.__files[path] = child
 
-        child.set_properties(path, mode)
+        if not self._mock_wraps:
+            child.set_properties(path, mode)
 
         if path not in self.__files:
             self.__files[path] = child
